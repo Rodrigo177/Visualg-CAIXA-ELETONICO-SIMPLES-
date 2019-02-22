@@ -1,0 +1,110 @@
+Algoritmo "Caixa Eletronico Simples"
+
+Var
+
+    nome: caractere
+    saqueBnc, depositoBnc, valorCnt, valorFnl: real
+    oprc: inteiro
+    id: inteiro
+
+    // DEPOSITO //
+    procedimento deposito()
+    inicio
+    escreval ("ID: ",id," ***D E P O S I T O***")
+    escreval ("VALOR?")
+    leia (depositoBnc)
+    se depositoBnc <= 0 entao
+    limpatela
+    escreval()
+    escreval ("Valor Invalido!")
+    senao
+    valorFnl <- valorFnl + depositoBnc
+    escreval()
+    escreval (" VALOR EM CONTA R$",valorFnl)
+    fimse
+    menu()
+    fimprocedimento
+
+    // SAQUE //
+    procedimento saque()
+    inicio
+    escreval ("ID: ",id," ***S A Q U E***")
+    escreval ("ID: ",id," Valor em Conta R$",valorFnl)
+    escreval ("ID: ",id," Quanto você deseja Sacar?")
+    leia (SaqueBnc)
+    se valorFnl <= 0 entao
+    limpatela
+    escreval ("Valor Invalido!")
+    fimse
+    se valorFnl < SaqueBnc entao
+    escreval()
+    escreval ("Você não tem esse valor na conta!")
+    senao
+    escreval()
+    escreval (" Valor Retirado R$", SaqueBnc)
+    escreval (" Valor Atualizado R$", valorFnl - SaqueBnc)
+    valorFnl <- valorFnl - SaqueBnc
+    fimse
+    menu()
+    fimprocedimento
+    
+    // EXTRATO //
+    procedimento extrato()
+    inicio
+    escreval ("ID: ",id," ***  E X T R A T O  ***")
+    escreval ("ID: ",id," ***  A G U A R D E  ***")
+    se valorFnl <= 0 entao
+    escreval()
+    escreval ("Valor ZERADO!(Sem Fundos Na Conta)")
+    senao
+    escreval()
+    escreval (" VALOR EM CONTA R$",valorFnl)
+    fimse
+    menu()
+    fimprocedimento
+    
+       // MENU //
+       procedimento menu()
+       inicio
+       escreval ()
+       escreval ("*** Seja Bem-Vindo ao Caixa Eletronico ", nome," ***")
+       escreval ("      *** Selecione a Operação Desejada *** ")
+       escreval ("             *** 1 - Deposito *** ")
+       escreval ("             *** 2 - Saque *** ")
+       escreval ("             *** 3 - Extrato *** ")
+       escreval ("             *** 4 - Sair *** ")
+       leia (oprc)
+       escolha oprc
+       Caso 1
+            deposito()
+       Caso 2
+            saque()
+       Caso 3
+            extrato()
+       Caso 4
+       escreval ("ID: ",id," ***  PROCESSO FINALIZADO  ***")
+       Fimalgoritmo
+       
+       // * //
+       outrocaso
+       escreval ("ID: ",id," ***  DESCONHECIDO  ***")
+       fimescolha
+       fimprocedimento
+       
+       // * //
+inicio
+
+       valorFnl <- 0
+       MUDACOR("Amarelo","FRENTE")
+       escreval ("Digite Seu Nome Completo")
+       leia (nome)
+       escreval ("Digite Um Numeral Para Identificação, De 1 a 100")
+       leia (id)
+       se id >= 100 entao
+       escreval ("Numero Desconhecido, Por Favor, de 1 a 100")
+       senao
+       escreval ("Seu ID é ",id)
+       fimse
+       menu()
+       
+Fimalgoritmo
